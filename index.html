@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>@bahdcode | Currency converter</title>
+	<meta charset="utf-8">
+	<!-- Primary Meta Tags -->
+<!-- <title>{{ new Intl.NumberFormat().format(calculateResult) }}</title>
+<meta name="title" content="{{ new Intl.NumberFormat().format(calculateResult) }}"> -->
+<meta name="description" content="Best currency converter. Best and fastest currency converter with zero ads">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://russell.96.lt/">
+<meta property="og:title" content="Best currency converter. Best and fastest currency converter with zero ads. Developed by @bahdcode| Chambah Russell">
+<meta property="og:description" content="Best currency converter. Best and fastest currency converter with zero ads. Developed by @bahdcode| Chambah Russell">
+<meta property="og:image" content="myAvatar.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="http://russell.96.lt/">
+<meta property="twitter:title" content="Best currency converter. Best and fastest currency converter with zero ads">
+<meta property="twitter:description" content="Best currency converter. Best and fastest currency converter with zero ads. Most reliable. Developed by @bahdcode| Chambah Russell">
+<meta property="twitter:image" content="myAvatar.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+	<style>
+		* {
+			border-radius: 0!important;
+		}
+		body {
+			font-family: 'Poppins', sans-serif;
+			background-color: #E7F7F9;
+		}
+	</style>
+
+</head>
+
+<body>
+
+<div id="app">
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-md-6">
+				<label>From</label>
+				<select v-model="from" name="from" id="from" class="form-control">
+					<option :value="currency.id" v-for="currency in formattedCurrencies">
+						{{ currency.currencyName }}
+					</option>
+				</select>
+			</div>
+			<div class="col-md-6">
+				<label>To</label>
+				<select v-model="to" name="to" id="to" class="form-control">
+					<option :value="currency.id" v-for="currency in formattedCurrencies">
+						{{ currency.currencyName }}
+					</option>
+				</select>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<input type="text" v-model="amount" name="amount" id="amount" placeholder="Amount" class="form-control my-5">
+
+				<div class="text-center">
+					<button :disabled="disabled" @click="convertCurrency()" class="btn btn-lg btn-primary">
+						{{ loading ? 'Converting ...' : 'Convert' }}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<h1 class="text-center mt-5">{{  new Intl.NumberFormat().format(calculateResult) }}</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 offset-md-3" align="center">Russell @bahdcode &copy; {{ new Date().getFullYear()  }}</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
